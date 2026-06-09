@@ -1,0 +1,22 @@
+# Byte-compiled / cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cache do pytest
+.pytest_cache/
+.cache/
+
+# Cobertura de testes
+.coverage
+.coverage.*
+htmlcov/
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Configuracoes de IDE
+.vscode/
+.idea/
