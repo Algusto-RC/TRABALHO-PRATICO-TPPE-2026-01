@@ -1,5 +1,12 @@
 import pytest
 import sys
+import os
+
+# Resolve o problema de importacao do modulo 'src'.
+# Pega o caminho absoluto do diretorio pai (raiz do projeto) e adiciona ao sys.path.
+diretorio_raiz = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if diretorio_raiz not in sys.path:
+    sys.path.insert(0, diretorio_raiz)
 
 
 def run_all_tests():
