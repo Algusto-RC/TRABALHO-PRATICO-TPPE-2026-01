@@ -1,5 +1,3 @@
-readme_content = """# Trabalho Prático - Curadoria de Dados Científicos
-
 ## UnB - Universidade de Brasília  
 ### FCTE - Faculdade de Ciências e Tecnologias em Engenharias  
 ### Disciplina: Técnicas de Programação para Plataformas Emergentes (TPPE)
