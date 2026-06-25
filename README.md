@@ -38,6 +38,8 @@ O projeto consiste no desenvolvimento de uma ferramenta de curadoria e deduplica
 
 ## Refatoracao Aplicada
 
+### Extrair Metodo
+
 Foi aplicada a operacao de refatoracao **Extrair Metodo** no metodo
 `ParticleNormalizer.matches()`, responsavel por verificar se um nome completo
 e uma variacao representam o mesmo autor no Caso 3.
@@ -56,6 +58,22 @@ a regra especifica de equivalencia entre tokens.
 
 A mudanca preserva o comportamento original e melhora a legibilidade,
 a coesao e a manutenibilidade do codigo.
+
+### Substituir Metodo por Objeto-Metodo
+
+Foi aplicada a operacao de refatoracao **Substituir Metodo por Objeto-Metodo**
+no metodo `InitialsMatcher.matches()`, responsavel por verificar se um nome
+completo e uma abreviacao no formato "Sobrenome + Iniciais" representam o
+mesmo autor no Caso 2.
+
+Antes da refatoracao, `matches()` concentrava validacao dos parametros,
+extracao do sobrenome e das iniciais, tokenizacao do nome abreviado e comparacao
+final. Apos a refatoracao, essa logica passou para a classe `InitialsMatch`,
+que atua como objeto-metodo e armazena os dados intermediarios da comparacao.
+
+Com isso, `InitialsMatcher.matches()` permanece como ponto de entrada publico e
+delega a execucao para `InitialsMatch.matches()`, preservando o comportamento
+original e melhorando a separacao de responsabilidades.
 
 ---
 
