@@ -36,6 +36,29 @@ O projeto consiste no desenvolvimento de uma ferramenta de curadoria e deduplica
 
 ---
 
+## Refatoracao Aplicada
+
+Foi aplicada a operacao de refatoracao **Extrair Metodo** no metodo
+`ParticleNormalizer.matches()`, responsavel por verificar se um nome completo
+e uma variacao representam o mesmo autor no Caso 3.
+
+Antes da refatoracao, a regra de comparacao entre cada token do nome completo
+e da variante estava implementada diretamente dentro do laco de `matches()`.
+Essa regra aceita dois cenarios:
+
+* os tokens sao exatamente iguais;
+* o token da variante e uma inicial correspondente ao token completo.
+
+Apos a refatoracao, essa logica foi extraida para o metodo privado
+`_tokens_match(full_token, variant_token)`. Com isso, `matches()` permanece
+responsavel pelo fluxo geral da comparacao, enquanto `_tokens_match()` concentra
+a regra especifica de equivalencia entre tokens.
+
+A mudanca preserva o comportamento original e melhora a legibilidade,
+a coesao e a manutenibilidade do codigo.
+
+---
+
 ## Instruções de Execução dos Testes
 
 Para rodar os testes unitários garantindo que todas as validações de curadoria de dados estejam funcionando, siga as instruções abaixo:

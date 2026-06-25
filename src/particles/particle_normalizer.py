@@ -23,6 +23,15 @@ class ParticleNormalizer:
         tokens = text.split()
         return [t for t in tokens if t not in self.PARTICLES]
 
+    def _tokens_match(self, full_token, variant_token):
+        is_exact_match = full_token == variant_token
+        is_initial_match = (
+            len(variant_token) == 1
+            and full_token.startswith(variant_token)
+        )
+
+        return is_exact_match or is_initial_match
+
     def matches(self, full_name, variant_name):
         """
         Indica se o nome completo e a variante (com abreviações intermediárias
@@ -35,11 +44,7 @@ class ParticleNormalizer:
             return False
 
         for full_tok, var_tok in zip(full_tokens, variant_tokens):
-            # O token deve ser igual, ou a variante deve ser a inicial do token completo
-            is_exact_match = (full_tok == var_tok)
-            is_initial_match = (len(var_tok) == 1 and full_tok.startswith(var_tok))
-            
-            if not (is_exact_match or is_initial_match):
+            if not self._tokens_match(full_tok, var_tok):
                 return False
 
         return True
