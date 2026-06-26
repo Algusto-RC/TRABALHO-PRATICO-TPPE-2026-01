@@ -75,6 +75,26 @@ Com isso, `InitialsMatcher.matches()` permanece como ponto de entrada publico e
 delega a execucao para `InitialsMatch.matches()`, preservando o comportamento
 original e melhorando a separacao de responsabilidades.
 
+### Extrair Classe
+
+Foi aplicada a operação de refatoração **Extrair Classe** na classe
+`ParticleNormalizer`, conforme definido para o grupo 6 no enunciado do trabalho.
+
+Antes da refatoração, `ParticleNormalizer` concentrava tanto o fluxo geral da
+normalização de partículas quanto a regra específica de equivalência entre dois
+tokens. Essa regra havia sido isolada anteriormente pelo **Extrair Método** no
+método `_tokens_match(full_token, variant_token)`.
+
+Após a refatoração, essa responsabilidade foi movida para a nova classe
+`ParticleTokenMatcher`, que passou a concentrar a comparação entre tokens. A
+classe `ParticleNormalizer` permanece como ponto de entrada do Caso 3 e agora
+delega a comparação unitária para `ParticleTokenMatcher`, mantendo a API pública
+`matches()` e `expand()` sem alteração.
+
+Com isso, a classe original fica mais coesa, pois continua responsável pelo
+processo de normalização/expansão de nomes com partículas, enquanto a nova
+classe concentra a regra de equivalência entre tokens.
+
 ---
 
 ## Instruções de Execução dos Testes
